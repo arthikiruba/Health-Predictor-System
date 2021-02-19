@@ -1,0 +1,171 @@
+{%extends 'basic.html'%}
+{%block content%}
+
+<div class="container">
+  <div class="display-3 my-2 text-center">Heart Disease Prediction</div>
+  <hr />
+  {% if context %}
+  <div class="display-4 my-2 text-center">
+    You {{ context }} heart disease.
+  </div>
+  {% endif %}
+
+  <div class="mt-4">
+    <form class="row" method="POST" action="{% url 'heart' %}">
+      {% csrf_token %}
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input
+            type="number"
+            placeholder="age"
+            class="form-control"
+            id="age"
+            name="age"
+            />
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <input
+            type="text"
+            placeholder="(female or male)"
+            class="form-control"
+            id="gender"
+            name="gender"
+          />
+        </div>
+        <div class="form-group">
+          <label for="cp">Chest Pain Type</label>
+          <input
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="cp"
+            placeholder="(range: 0-3)"
+            name="cp"
+          />
+        </div>
+        <div class="form-group">
+          <label for="trestbps">Blood Pressure</label>
+          <input
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="trestbps"
+            placeholder="(range: 94-200)"
+            name="trestbps"
+          />
+        </div>
+        <div class="form-group">
+          <label for="chol">CHOLESTORAL</label>
+          <input
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="chol"
+            placeholder="(range: 126-564)"
+            name="chol"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="fbs">Blood Sugar</label>
+          <input
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="fbs"
+            placeholder="(range: (0-1))"
+            name="fbs"
+          />
+        </div>
+        <div class="form-group">
+          <label for="restecg">Electrocardiographic</label>
+          <input
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="restecg"
+            placeholder="(range: values 0,1,2)"
+            name="restecg"
+          />
+        </div>
+        <div class="form-group">
+          <label for="thalach">Heart Rate</label>
+          <input
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="thalach"
+            placeholder="(range: 71-202)"
+            name="thalach"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exang">EXANG</label>
+          <input
+            type="number"
+            step=".00001"
+            class="form-control"
+            id="exang"
+            value="0"
+            name="exang"
+          />
+        </div>
+        <div class="form-group">
+          <label for="oldpeak">OLDPEAK</label>
+          <input
+            type="number"
+            step=".00001"
+            class="form-control"
+            id="oldpeak"
+            value="0"
+            name="oldpeak"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="slope">SLOPE</label>
+          <input
+            type="number"
+            step=".00001"
+            class="form-control"
+            id="slope"
+            value="0"
+            name="slope"
+          />
+        </div>
+        <div class="form-group">
+          <label for="ca">CA</label>
+          <input
+            type="number"
+            step=".00001"
+            class="form-control"
+            id="ca"
+            value="0"
+            name="ca"
+          />
+        </div>
+        <div class="form-group mb-5">
+          <label for="thal">THAL</label>
+          <input
+            type="number"
+            step=".00001"
+            class="form-control"
+            id="thal"
+            value="0"
+            name="thal"
+          />
+        </div>
+
+        <button type="submit" class="btn-lg btn-block btn btn-primary mb-5">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

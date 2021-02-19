@@ -1,0 +1,86 @@
+{%extends 'basic.html'%}
+{% load static %}
+
+{%block content%}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+        <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+
+        <!-- Bootstrap CSS -->
+
+        <!-- <script src="{% static 'jquery.js' %}"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/bootstrap.min.css' %}"> -->
+
+       <title>About</title>
+
+       <!-- <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/bootstrap.min.css' %}"> -->
+
+
+
+    </head>
+    <body>
+        {{hello}}
+        <div class="container-fluid padding">
+        <!-- <div class="row padding">
+            <div class="col-md-12 col-lg-6"> -->
+
+                <h1>Details : </h1>
+                <h3>This is a basic machine learning and deep learning based medical app.</h3>
+                <p>The prediction about the disease is made with the help of the machine learning model which itself is trained on the thousands of the datasets</p>
+                <p>So with the following paragraph I gonna be describing about the types of the disease which gonna be getting employed in this app.</p>
+
+                <h2>Heart Disease</h2>
+                <h3>Overview</h3>
+                <p>Heart disease describes a range of conditions that affect your heart. Diseases under the heart disease umbrella include blood vessel diseases, such as coronary artery disease; heart rhythm problems (arrhythmias); and heart defects you're born with (congenital heart defects), among others.<br>
+                    The term "heart disease" is often used interchangeably with the term "cardiovascular disease." Cardiovascular disease generally refers to conditions that involve narrowed or blocked blood vessels that can lead to a heart attack, chest pain (angina) or stroke. Other heart conditions, such as those that affect your heart's muscle, valves or rhythm, also are considered forms of heart disease.<br>
+                    Many forms of heart disease can be prevented or treated with healthy lifestyle choices</p>
+                <h3>Symptoms</h3>
+                <ul>
+                    <li>Chest Pain, Chest Tighness, Chest Pressure and Chest Discomfort(Angina)</li>
+                    <li>Shortness of Breath.</li>
+                    <li>Pain in the Neck, Jaw, Throat, Upper Abdomen or Back</li>
+                    <li>Pain, Numbness Weakness or coldness in your legs or arms if the blood vessels in this parts of your body narrowed.</li>
+                </ul>
+                <div class="col-lg-6">
+                    <a href="{% url 'heart' %}" class="btn btn-primary"> Check Heart Disease</a>
+                </div>
+                <br>
+                <hr>
+
+            <!-- </div> -->
+        <!-- </div> -->
+                <h2>Diabetes</h2>
+                <h3>Overview</h3>
+                <p>Diabetes is a disease that occurs when your blood glucose, also called blood sugar, is too high. Blood glucose is your main source of energy and comes from the food you eat. Insulin, a hormone made by the pancreas, helps glucose from food get into your cells to be used for energy.</p>
+                <h3>What health problems can people with diabetes develop? </h3>
+                <p>Over time, high blood glucose leads to problems such as</p>
+                <ul>
+                    <li>Heart Disease</li>
+                    <li>Stroke</li>
+                    <li>Kidney Disease</li>
+                    <li>Eye Problems</li>
+                    <li>Dental Disease</li>
+                    <li>Nerve Damage</li>
+                    <li>Foot Problems</li>
+                </ul>
+                <div class="col-lg-6">
+                    <a href="{% url 'diabetes' %}" class="btn btn-primary"> Check Diabetes</a>
+                </div>
+                <br>
+                <hr>
+        </div>
+
+    </body>
+</html>
+{% endblock %}
