@@ -1,25 +1,17 @@
 {% extends "basic.html" %}
 {% load static %}
 
-
     {% block head %}
 
 {% endblock %}
 
-
-
-
 {% block body %}
-
 
 
 <br>
 <div class="container mt-2 mb-3">
 <center><h2>Patient Profile</h2>
 </center><br>
-
-
-
 
     <div class="row">
         <div class="col" >
@@ -30,7 +22,7 @@
                   <h4 class="card-title">Patient name : {{puser.patient.name}}</h4>
                   <p class="card-text">Patient ID - {{puser.patient.user_id}}</p>
                   <p class="card-text">Patient email - {{puser.email}}</p>
-                  <a href="{% url 'pviewprofile' puser.username %}" class="btn btn-success">View Profile</a>
+                  <a href="{% url 'pviewprofile' puser.username %}" class="btn btn-primary">View Profile</a>
                 </div>
               </div>
 
@@ -39,19 +31,28 @@
 
         <div class="col" >
                <div class="row">
-               <a id="links" class="btn btn-outline-success btn-block" href="{% url 'checkdisease' %}">check disease </a><br>
+               <a id="links" class="btn btn-outline-primary btn-block" href="{% url 'checkdisease' %}">General Symptoms Prediction</a><br>
+               </div><br><br>
+
+               <div class="row">
+                   <a class="btn btn-outline-primary btn-block" href="{% url 'heart' %}">Heart Disease Prediction</a><br>
                </div>
 
                <div class="row">
-                   <a class="btn btn-outline-success btn-block" href="{% url 'heart' %}">Heart Disease</a><br>
+                   <a class="btn btn-outline-primary btn-block" href="{% url 'diabetes' %}">Diabetes Prediction</a>
+                   <br>
                </div>
 
                <div class="row">
-                <a class="btn btn-outline-success btn-block {% if heart %} {{active}} {% endif %}" href="{% url 'pconsultation_history' %}">view consulation history</a><br>
+                   <a class="btn btn-outline-primary btn-block" href="{% url 'breast' %}">Breast Cancer Prediction</a><br>
+               </div><br><br><br>
+
+               <div class="row">
+                <a class="btn btn-outline-primary btn-block" href="{% url 'pconsultation_history' %}">View Consulation History</a><br>
                 </div>
 
                <div class="row">
-                <button class="btn btn-outline-success btn-block" data-toggle="modal" data-target="#myModal-feedback">Give feedbacks </button><br>
+                <button class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#myModal-feedback">Give Feedbacks </button><br>
                 </div>
 
 

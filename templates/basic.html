@@ -14,6 +14,8 @@
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
 
+  <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+
     <!-- Bootstrap CSS -->
 
     <script src="{% static 'jquery.js' %}"></script>
@@ -42,7 +44,7 @@
 
   body{
 
-  background-image: url( "{% static 'homepage/gray.jpg' %}");
+  background-image: url( "{% static 'homepage/bg.jpg' %}");
   background-attachment: fixed;
   opacity: 0.93;
   background-repeat: no-repeat;
@@ -54,24 +56,13 @@
 
 </style>
 
-
-
-
     {% block head %}
 
-
-
     {% endblock %}
-
-
-
   </head>
 
 
   <body>
-
-
-
       <div class="container-fluid">
 
           <div class="page-header mt-1 mb-1 ml-1 ">
@@ -80,8 +71,8 @@
         </div>
 
 
-          <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1d612d;">
-              <a class="navbar-brand" href="{% url 'home' %}">Predict </a>
+          <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5572a1;">
+              <a class="navbar-brand" href="{% url 'home' %}">HEALTH PREDICTOR </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
           <span class="navbar-toggler-icon"></span>
               </button>
@@ -91,7 +82,7 @@
                           <a class="nav-link" href="{% url 'home' %}">Home</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="{% url 'about' %}">About</a>
+                          <a class="nav-link" href="{% url 'about' %}">About Predict</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="{% url 'home' %}">Contact</a>
@@ -134,9 +125,11 @@
                             </li>
 
 
+
                       {% endif %}
 
                       <li class="nav-item ml-2">
+
       <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#logout-modal" style="color: rgb(247, 190, 188);">Log out</button>
 
                       </li>

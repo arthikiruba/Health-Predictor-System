@@ -2,43 +2,44 @@
 {% extends "basic.html" %}
 {% load static %}
 
-
 	{% block head %}
 
-
 {% endblock %}
-
-
-
-
 {% block body %}
 
-
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 
 <div class="jumbotron">
-    <h1 class="display-4">Be your own doctor...</h1>
-    <p class="lead">
-            It might have happened so many times that you or someone yours need doctor’s help immediately,
-             but they are not available due to some reasons.The Disease Prediction system is an end user
-              support and online consultation project. Here, we propose a web application that allow users
-              to get instant guidance on their disease through an intelligent system. The application is
-              fed with various details and the disease associated with those details.The application allows
-               user to share their disease related issues.It then processes user specific details to check
-               for various illness that could be associated with it.Here we use some intelligent data mining
-                techniques to guess the most accurate illness that could be associated with patient’s details.
-                Based on result, patient can contact doctor accordingly for further treatment.
+	<div class="container-fluid padding">
+	    <div class="row padding">
+	        <div class="col-md-12 col-lg-6">
+				<h1 class="display-4">What is Predict ?</h1>
+			    <p class="lead">
+					Predict is an online tool that helps patients and clinicians
+					to check their disease and consult with doctors
+					It might have happened so many times that you or someone
+					of yours need doctor’s help immediately, but they are not
+					available due to some reason. The Health Predictor System is
+					an end user support and online consultation project.
+					The system allows the patient to consult the doctor at their convenience by sitting at home.
+					</p>
+			</div>
 
+
+					<div class="col-lg-6">
+						<img src="{% static 'homepage/doctor with microscope1.jpg' %}" class="img-fluid" alt="" style="width:700px;height:400px;">
+			        </div>
 
 
      {% if user.is_authenticated %}
 
-
      {% else %}
 
       <p class="lead">
-      <button type="button" class="btn btn-success btn-lg"  data-toggle="modal" data-target=".bd-example-modal-lg">Get started</button>
+      <button type="button" class="btn btn-primary btn-lg"  data-toggle="modal" data-target=".bd-example-modal-lg">Start Predict</button>
       </p>
-
+  </div>
+  </div>
 
 </div>
 
@@ -47,7 +48,6 @@
       <center>
         <h1>Sign-In  As</h1>
         </center>
-
 
       <form>
           <div class="container mt-5 mb-5">
@@ -73,8 +73,6 @@
         </div>
       </form>
 </div>
-
-
 
 
     {% endif %}
@@ -126,11 +124,6 @@
 </div>
 
 
-
-
-
-
-
 <!-- Large modal -->
 
 <div class="modal fade bd-example-modal-lg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -168,11 +161,69 @@
 </div>
 
 
+<!-- <div class="container-fluid padding">
+    <div class="row welcome text-center">
+            <div class="col-12">
+                <h1 class="display-4">About Health Predictor System</h1>
+            </div>
+            <hr>
+            <div class="col-12">
+                <p class="lead"> It might have happened so many times that you or someone of yours need doctor’s
+					help immediately, but they are not available due to some reason. The Health Predictor System
+					is an end user support and online consultation project. Here we propose a system that allows
+					users to get instant guidance on their health issues through an intelligent health care system
+					online. The system is fit with various symptoms and the disease/illness associated with those systems.
+                    The system allows user to share their symptoms and issues. Then the system processes user’s
+					symptoms to check for various illnesses that could be associated with it. Here we use some
+					intelligent data mining techniques to guess the very most accurate illness that could be associated
+					with patient’s symptoms.In doctor’s module when a doctor login to the system, doctor can view his
+					patient’s details and the report of the patient. Doctor can view details about the patient and what
+					patient searched for according to their prediction. Doctor can view his personal details. Adim can
+					add new disease details by specifying the type and symptoms of the disease into the database.
+					Based on the name of the disease and symptom the data mining algorithm works. Admin can view various
+					disease and symptoms stored in database. THis system will provide proper guidance when the user
+					specifies the symptoms of his illness.</p>
+            </div>
+    </div>
+</div> -->
 
 
+<!-- <div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-md-12 col-lg-6">
+            <h2>About Heart Disease Prediction</h2>
+            <p>jmtb7tkuu7uy hiutty uwuagfbjyet ygutga iuyugajhbyugutkt
+            gujgywgFhg6gjg,hegj</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                culpa qui officia deserunt mollit anim id est laborum.</p>
+                <br>
+                <a href="{% url 'heart' %}" class="btn btn-primary">Check Heart Disease</a>
+        </div>
+        <div class="col-lg-6">
+            <img src="{% static 'homepage/heart.jpg' %}" class="img-fluid" alt="">
+        </div>
+    </div>
+    </div>
 
-<br><br><br><br>
-<center><h2>Our Doctors</h2></center>
+	<hr class="my-4">
+    <figure>
+    <div class="fixed-wrap">
+        <div class="fixed">
+        </div>
+    </div>
+    </figure> -->
+
+<!-- <br><br><br><br>
+<center><h2>Our Doctors</h2></center><hr>
 <div class="row mt-5 mb-5">
     <div class="col">
         <div class="card">
@@ -204,37 +255,93 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
+
+<!-- <br><br><br><br>
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'homepage/c31.jpg' %}" alt="admin">
+                <div class="card-body">
+                    <h4 class="card-title">Dr. ROBB STARK </h4>
+                    <p class="card-text">D.No-12/23, Ward No-14, New Anna Salai Road, Teynampet, Chennai - 600018, (Tamil Nadu).</p>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'homepage/c41.jpg' %}" alt="admin">
+                <div class="card-body">
+                    <h4 class="card-title">Dr. JON SNOW</h4>
+                    <p class="card-text">Om Niwas Khai Basti, Khai Road, Lehragaga-148031, Distt. Sangrur, Punjab </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'homepage/s72.jpg' %}" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">DR. CERSEI LANNISTER</h4>
+                    <p class="card-text">Swaroop Hospital, 1, Hawa Sarak, Civil Lines, # Jaipur-302 019.</p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div> -->
 
 <br><br><br><br>
+<div class="container-fluid padding">
+    <div class="row text-center padding">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <i class="fas fa-chart-line"></i>
+            <h3>What does Predict do?</h3>
+            <p>Predict asks for some details about the
+				patient and the cancer. It then uses data
+				about the survival of similar women in the
+				past to show the likely proportion of
+				such women expected to survive up to fifteen
+				years after their surgery with different
+				treatment combinations.</p>
+        </div>
 
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <i class="fas fa-bold"></i>
+            <h3>Who is Predict for?</h3>
+            <p>Predict is for clinicians, patients and their families.
 
+               Patients should use it in consultation with a medical professional.</p>
+        </div>
 
+        <div class="col-sm-12 col-md-4">
+            <i class="fab fa-css3"></i>
+            <h3>Where can I find out more?</h3>
+            <p>To read more go to About Predict</p>
+        </div>
+    </div>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-    <div id="footer" class="card bg-dark text-white">
+    <!-- <div id="footer" class="card bg-dark text-white">
       <div class="card-body">
         Contact-
 
-    <ul >
+    <ul>
 
-      <li >
+      <li>
         <h5 class="mb-1">Email: arthikiruba1671@gmail.com</h5>
       </li>
-      <li >
+      <li>
         <h5 class="mb-1">Contact no. (+91) 6382086320</h5>
       </li>
-      <li >
+      <li>
         <h5 class="mb-1">Address: Chennai, TN</h5>
         <div class="footer-copyright text-center">© 2020 Copyright:
           <a href="#"> Predict.com</a>
@@ -243,29 +350,55 @@
 
     </ul>
   </div>
-  </div>
+  </div> -->
+  <footer>
+    <div class="container-fluid padding">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <hr class="light">
+			<h5>Contact Info</h5>
+			<hr class="light">
+			<p style="text-align:left;">Home : TN,IN</p>
+            <p style="text-align:left;">Country : India</p>
+			<p style="text-align:left;">Mobile : +91 6382086320</p>
+            <p style="text-align:left;">Email : arthi@gmail.com</p>
+        </div>
 
+        <div class="col-md-4">
+            <hr class="light">
+            <h5>Modules</h5>
+            <hr class="light">
+			<a href="{% url 'checkdisease' %}" style="text-align:left;">General Symptoms Predictor</a><br><br>
+            <a href="{% url 'heart' %}" style="text-align:left;"> Heart Disease Predictor</a><br><br>
+            <a href="{% url 'breast' %}" style="text-align:left;">Breast Cancer Predictor</a><br><br>
+			<a href="{% url 'diabetes' %}" style="text-align:left;">Diabetes Predictor</a>
+        </div>
 
+        <div class="col-md-4">
+            <hr class="light">
+            <h5>About Project</h5>
+            <hr class="light">
+            <p style="text-align:justify;"> Healthcare industry has huge amount of
+			    data that contains hidden information. This information supports
+			    decision making process on related area. In this research paper,
+			    we discussed various approaches of data mining which are useful in
+			    predicting the disease. </p>
+        </div>
+        <div class="col-12">
+            <hr class="light">
+            <h5>&copy; arthikiruba.com</h5>
+        </div>
 
-
-
-
+    </div>
+</footer>
 
 
 </div>
-
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
-
-
-
-
 
 {% endblock %}

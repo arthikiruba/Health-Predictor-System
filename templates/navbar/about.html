@@ -1,0 +1,123 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+
+       <title>About</title>
+
+    </head>
+    <body>
+        <h1>Who is it for?</h1>
+        <p>The tool applies to women who have had surgery for early invasive breast cancer
+            and are deciding which other treatments to have.
+
+            The data on which PREDICT is based did not include information on the presence
+            of bilateral disease. The performance of the model on women with bilateral breast
+            cancer is not known. The benefits of chemotherapy applied in the model were taken
+            from the Early Breast Cancer Trialist Collaborative Group meta-analysis of adjuvant
+            chemotherapy trials. A similar benefit is likely to apply to neo-adjuvant chemotherapy.
+            It is not designed for women whose cancer has already spread to distant parts of the
+            body at the time it is diagnosed or for women who only have non-invasive breast cancer,
+            such as as Ductal Carcinoma In Situ or Lobular Carcinoma In Situ.
+
+            The current version of the tool does not include all the treatments that are currently
+            available. We are working to include more in the near future. In the meantime, an
+            appropriate clinician will be able to advise on all the treatment options suitable
+            for a particular patient.
+
+            Predict only asks for certain information about the cancer. The inputs it asks
+            for are the ones that we have enough information about to predict how they affect
+            survival rates. It does not differentiate between the types of surgery
+            (for example, mastectomy or lumpectomy) or ask for lifestyle factors such as
+            smoking or exercise. These will affect survival, but at the moment we can't say by how much.</p>
+            <hr>
+
+            <h1>How Predict works</h1>
+            <p>The estimates that Predict produces are based on scientific studies that have been
+                conducted into how effective breast cancer treatments are. We know from studies
+                involving many thousands of women that the benefit from treatment is affected by the
+                size and type of the cancer at diagnosis, whether the cancer has spread to involve
+                lymph nodes, and whether or not the cancer expresses markers such as the oestrogen
+                receptor (ER), HER2 and KI67. By analysing the results of these
+                studies, statisticians are able to say how these aspects of the cancer are
+                likely to affect average survival and how much benefit might be gained on
+                average from different treatment options.
+
+                Predict has been tested to make sure that the estimates it produces are as
+                accurate as they can be given current knowledge. Predict was originally developed
+                using data from over 5000 women with breast cancer. Its predictions were then tested
+                on data from another 23,000 women from around the world to make sure that they gave as
+                good an estimate as possible.
+
+                Although Predict produces good estimates, it cannot say whether an individual patient
+                will survive their cancer or not. It can only provide the average survival rate for people
+                in the past of a similar age and with similar cancers.
+
+                The technical section has more detail on how Predict was developed and tested.</p>
+
+
+
+        <!-- {{ hello }} -->
+        <!-- <div class="jumbotron"> -->
+        <!-- <div class="container"> -->
+        <!-- <div class="row padding"> -->
+            <!-- <div class="col-md-12 col-lg-6"> -->
+
+                <!-- <h1>Details : </h1><br>
+                <h3>This is a basic machine learning and deep learning based medical app.</h3>
+                <p>The prediction about the disease is made with the help of the machine learning model which itself is trained on the thousands of the datasets</p>
+                <p>So with the following paragraph I gonna be describing about the types of the disease which gonna be getting employed in this app.</p>
+
+                <h2>Heart Disease</h2>
+                <h3>Overview</h3>
+                <p>Heart disease describes a range of conditions that affect your heart. Diseases under the heart disease umbrella include blood vessel diseases, such as coronary artery disease; heart rhythm problems (arrhythmias); and heart defects you're born with (congenital heart defects), among others.<br>
+                    The term "heart disease" is often used interchangeably with the term "cardiovascular disease." Cardiovascular disease generally refers to conditions that involve narrowed or blocked blood vessels that can lead to a heart attack, chest pain (angina) or stroke. Other heart conditions, such as those that affect your heart's muscle, valves or rhythm, also are considered forms of heart disease.<br>
+                    Many forms of heart disease can be prevented or treated with healthy lifestyle choices</p>
+                <h3>Symptoms</h3>
+                <ul>
+                    <li>Chest Pain, Chest Tighness, Chest Pressure and Chest Discomfort(Angina)</li>
+                    <li>Shortness of Breath.</li>
+                    <li>Pain in the Neck, Jaw, Throat, Upper Abdomen or Back</li>
+                    <li>Pain, Numbness Weakness or coldness in your legs or arms if the blood vessels in this parts of your body narrowed.</li>
+                </ul>
+                <div class="col-lg-6">
+                    <a href="{% url 'heart' %}" class="btn btn-success"> Check Heart Disease</a>
+                </div>
+                <br>
+                <hr>
+
+                <h2>2.Diabetes</h2>
+
+                <p>Diabetes is a disease that occurs when your blood glucose, also called blood sugar, is too high. Blood glucose is your main source of energy and comes from the food you eat. Insulin, a hormone made by the pancreas, helps glucose from food get into your cells to be used for energy.</p>
+                <h3>What health problems can people with diabetes develop? </h3>
+                <p>Over time, high blood glucose leads to problems such as</p>
+
+                 <ul>
+                  <li>heart disease</li>
+                  <li>stroke</li>
+                  <li>kidney disease</li>
+                  <li>eye problems</li>
+                  <li>dental disease</li>
+                  <li>nerve damage</li>
+                  <li>foot problems</li>
+                </ul>
+                <div class="col-lg-6">
+                    <a href="{% url 'diabetes' %}" class="btn btn-success"> Check Diabetes</a>
+                </div>
+                <br>
+                <hr>
+                <br> -->
+
+
+            <!-- </div> -->
+        <!-- </div> -->
+        <!-- </div> -->
+        <!-- </div> -->
+
+    </body>
+</html>
+{% endblock %}

@@ -15,13 +15,10 @@ from sklearn.neighbors import KNeighborsClassifier
 
 # Create your views here.
 
-
 #loading trained_model
+
 import joblib as jb
 model = jb.load('trained_model')
-
-
-
 
 def home(request):
 
@@ -32,12 +29,6 @@ def home(request):
 
       else :
         return render(request,'homepage/index.html')
-
-
-
-
-
-
 
 
 def admin_ui(request):
@@ -54,14 +45,9 @@ def admin_ui(request):
       else :
         return redirect('home')
 
-
-
     if request.method == 'POST':
 
        return render(request,'patient/patient_ui/profile.html')
-
-
-
 
 
 def patient_ui(request):
@@ -78,13 +64,9 @@ def patient_ui(request):
       else :
         return redirect('home')
 
-
-
     if request.method == 'POST':
 
        return render(request,'patient/patient_ui/profile.html')
-
-
 
 
 def pviewprofile(request, patientusername):
@@ -94,8 +76,6 @@ def pviewprofile(request, patientusername):
           puser = User.objects.get(username=patientusername)
 
           return render(request,'patient/view_profile/view_profile.html', {"puser":puser})
-
-
 
 
 def checkdisease(request):
@@ -136,15 +116,9 @@ def checkdisease(request):
 
   alphabaticsymptomslist = sorted(symptomslist)
 
-
-
-
   if request.method == 'GET':
 
      return render(request,'patient/checkdisease/checkdisease.html', {"list2":alphabaticsymptomslist})
-
-
-
 
   elif request.method == 'POST':
 
@@ -165,8 +139,6 @@ def checkdisease(request):
 
         """      #main code start from here...
         """
-
-
 
         testingsymptoms = []
         #append zero in all coloumn fields...
@@ -197,8 +169,6 @@ def checkdisease(request):
 
         confidencescore = format(confidencescore, '.0f')
         predicted_disease = predicted[0]
-
-
 
         #consult_doctor codes----------
 
@@ -259,12 +229,10 @@ def checkdisease(request):
         else :
            consultdoctor = "other"
 
-
         request.session['doctortype'] = consultdoctor
 
         patientusername = request.session['patientusername']
         puser = User.objects.get(username=patientusername)
-
 
         #saving to database.....................
 
@@ -276,7 +244,6 @@ def checkdisease(request):
 
         diseaseinfo_new = diseaseinfo(patient=patient,diseasename=diseasename,no_of_symp=no_of_symp,symptomsname=symptomsname,confidence=confidence,consultdoctor=consultdoctor)
         diseaseinfo_new.save()
-
 
         request.session['diseaseinfo_id'] = diseaseinfo_new.id
 
@@ -336,7 +303,7 @@ def heart(request):
         predictions = rf.predict(user_data)
 
         if int(predictions[0]) == 1:
-            value = 'have'
+            value = 'have heart disease. Consult a doctor.'
         elif int(predictions[0]) == 0:
             value = "don\'t have"
 
@@ -351,6 +318,111 @@ def heart(request):
                   })
 
 
+def diabetes(request):
+
+    dfx = pd.read_csv(r'C:\Users\arthi\PROJECT\Predico\templates\patient\diabetes\Diabetes_XTrain.csv')
+    dfy = pd.read_csv(r'C:\Users\arthi\PROJECT\Predico\templates\patient\diabetes\Diabetes_YTrain.csv')
+    X = dfx.values
+    Y = dfy.values
+    Y = Y.reshape((-1,))
+
+    value = ''
+    if request.method == 'POST':
+
+        pregnancies = float(request.POST['pregnancies'])
+        glucose = float(request.POST['glucose'])
+        bloodpressure = float(request.POST['bloodpressure'])
+        skinthickness = float(request.POST['skinthickness'])
+        bmi = float(request.POST['bmi'])
+        insulin = float(request.POST['insulin'])
+        pedigree = float(request.POST['pedigree'])
+        age = float(request.POST['age'])
+
+        user_data = np.array(
+            (pregnancies,
+             glucose,
+             bloodpressure,
+             skinthickness,
+             bmi,
+             insulin,
+             pedigree,
+             age)
+        ).reshape(1, 8)
+
+        knn = KNeighborsClassifier(n_neighbors=3)
+        knn.fit(X, Y)
+
+        predictions = knn.predict(user_data)
+
+        if int(predictions[0]) == 1:
+            value = 'have'
+        elif int(predictions[0]) == 0:
+            value = "don\'t have"
+
+    return render(request,
+                  'patient/diabetes/diabetes.html',
+                  {
+                      'context': value,
+                      'title': 'Diabetes Disease Prediction',
+                      'active': 'btn btn-success peach-gradient text-white',
+                      'diabetes': True,
+                      'background': 'bg-dark text-white'
+                  }
+                  )
+
+
+def breast(request):
+
+    df = pd.read_csv(r'C:\Users\arthi\PROJECT\Predico\templates\patient\breastcancer\Breast_train.csv')
+    data = df.values
+    X = data[:, :-1]
+    Y = data[:, -1]
+    print(X.shape, Y.shape)
+
+    value = ''
+    if request.method == 'POST':
+
+        radius = float(request.POST['radius'])
+        texture = float(request.POST['texture'])
+        perimeter = float(request.POST['perimeter'])
+        area = float(request.POST['area'])
+        smoothness = float(request.POST['smoothness'])
+
+        """
+        21:02:21 09 Oct, 2019 by Arjun Adhikari
+        Creating our training model.
+        """
+        rf = RandomForestClassifier(
+            n_estimators=16, criterion='entropy', max_depth=5)
+        rf.fit(np.nan_to_num(X), Y)
+
+        user_data = np.array(
+            (radius,
+             texture,
+             perimeter,
+             area,
+             smoothness)
+        ).reshape(1, 5)
+
+        predictions = rf.predict(user_data)
+        print(predictions)
+
+        if int(predictions[0]) == 1:
+            value = 'malignant (cancerous)'
+            # <a href="{% url 'consult_a_doctor' %}" class="btn btn-success">Consult a doctor</a>
+        elif int(predictions[0]) == 0:
+            value = "benign (noncancerous)"
+
+    return render(request,
+                  'patient/breastcancer/breast.html',
+                  {
+                      'context': value,
+                      'title': 'Breast Cancer Prediction',
+                      'active': 'btn btn-success peach-gradient text-white',
+                      'breast': True,
+                      'background': 'bg-primary text-white'
+                  })
+
 
 def pconsultation_history(request):
 
@@ -361,7 +433,6 @@ def pconsultation_history(request):
       patient_obj = puser.patient
 
       consultationnew = consultation.objects.filter(patient = patient_obj)
-
 
       return render(request,'patient/consultation_history/consultation_history.html',{"consultation":consultationnew})
 
@@ -376,9 +447,7 @@ def dconsultation_history(request):
 
       consultationnew = consultation.objects.filter(doctor = doctor_obj)
 
-
       return render(request,'doctor/consultation_history/consultation_history.html',{"consultation":consultationnew})
-
 
 
 def doctor_ui(request):
@@ -392,14 +461,9 @@ def doctor_ui(request):
       return render(request,'doctor/doctor_ui/profile.html',{"duser":duser})
 
 
-
-
-
-
 def dviewprofile(request, doctorusername):
 
     if request.method == 'GET':
-
 
          duser = User.objects.get(username=doctorusername)
          r = rating_review.objects.filter(doctor=duser.doctor)
@@ -409,15 +473,12 @@ def dviewprofile(request, doctorusername):
 
 def  consult_a_doctor(request):
 
-
     if request.method == 'GET':
-
 
         doctortype = request.session['doctortype']
         print(doctortype)
         dobj = doctor.objects.all()
         #dobj = doctor.objects.filter(specialization=doctortype)
-
 
         return render(request,'patient/consult_a_doctor/consult_a_doctor.html',{"dobj":dobj})
 
@@ -426,17 +487,14 @@ def  make_consultation(request, doctorusername):
 
     if request.method == 'POST':
 
-
         patientusername = request.session['patientusername']
         puser = User.objects.get(username=patientusername)
         patient_obj = puser.patient
-
 
         #doctorusername = request.session['doctorusername']
         duser = User.objects.get(username=doctorusername)
         doctor_obj = duser.doctor
         request.session['doctorusername'] = doctorusername
-
 
         diseaseinfo_id = request.session['diseaseinfo_id']
         diseaseinfo_obj = diseaseinfo.objects.get(id=diseaseinfo_id)
@@ -451,15 +509,12 @@ def  make_consultation(request, doctorusername):
 
         print("consultation record is saved sucessfully.............................")
 
-
         return redirect('consultationview',consultation_new.id)
-
 
 
 def  consultationview(request,consultation_id):
 
     if request.method == 'GET':
-
 
       request.session['consultation_id'] = consultation_id
       consultation_obj = consultation.objects.get(id=consultation_id)
@@ -469,9 +524,9 @@ def  consultationview(request,consultation_id):
    #  if request.method == 'POST':
    #    return render(request,'consultation/consultation.html' )
 def about(request):
-    page = {'hello' : ""}
-    return render(request, r'C:\Users\arthi\PROJECT\Predico\templates\about.html', context=page)
-
+    return render(request, 'navbar/about.html')
+    # page = {'hello' : "hello"}
+    # return render(request, 'navbar/about.html', context=page)
 
 
 def rate_review(request,consultation_id):
@@ -521,7 +576,6 @@ def post(request):
             return JsonResponse({ 'msg': msg })
     else:
         return HttpResponse('Request must be POST.')
-
 
 
 def chat_messages(request):

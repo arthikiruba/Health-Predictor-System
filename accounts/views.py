@@ -20,10 +20,7 @@ def logout(request):
     return render(request,'homepage/index.html')
 
 
-
-
 def sign_in_admin(request):
-
 
     if request.method == 'POST':
 
@@ -44,19 +41,15 @@ def sign_in_admin(request):
                   messages.info(request,'Please enter the correct username and password for a admin account.')
                   return redirect('sign_in_admin')
 
-
           else :
              messages.info(request,'Please enter the correct username and password for a admin account.')
              return redirect('sign_in_admin')
-
 
     else :
       return render(request,'admin/signin/signin.html')
 
 
-
 def signup_patient(request):
-
 
     if request.method == 'POST':
 
@@ -103,9 +96,7 @@ def signup_patient(request):
       return render(request,'patient/signup_Form/signup.html')
 
 
-
 def sign_in_patient(request):
-
 
     if request.method == 'POST':
 
@@ -128,11 +119,9 @@ def sign_in_patient(request):
                   messages.info(request,'invalid credentials')
                   return redirect('sign_in_patient')
 
-
           else :
              messages.info(request,'invalid credentials')
              return redirect('sign_in_patient')
-
 
     else :
       return render(request,'patient/signin_page/index.html')
@@ -155,18 +144,13 @@ def savepdata(request,patientusername):
 
     return redirect('pviewprofile',patientusername)
 
-
-
-
 #doctors account...........operations......
-
 
 def signup_doctor(request):
 
     if request.method == 'GET':
 
        return render(request,'doctor/signup_Form/signup.html')
-
 
     if request.method == 'POST':
 
@@ -218,16 +202,11 @@ def signup_doctor(request):
         return redirect('signup_doctor')
 
 
-
-
-
-
 def sign_in_doctor(request):
 
     if request.method == 'GET':
 
        return render(request,'doctor/signin_page/index.html')
-
 
     if request.method == 'POST':
 
@@ -255,12 +234,8 @@ def sign_in_doctor(request):
              messages.info(request,'invalid credentials')
              return redirect('sign_in_doctor')
 
-
     else :
       return render(request,'doctor/signin_page/index.html')
-
-
-
 
 
 def saveddata(request,doctorusername):
@@ -277,8 +252,6 @@ def saveddata(request,doctorusername):
     qualification =  request.POST['qualification']
     State_Medical_Council =  request.POST['State_Medical_Council']
     specialization =  request.POST['specialization']
-
-
 
     dobdate = datetime.strptime(dob,'%Y-%m-%d')
     yor = datetime.strptime(year_of_registration,'%Y-%m-%d')

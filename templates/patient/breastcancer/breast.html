@@ -1,0 +1,121 @@
+{%extends 'basic.html'%} {%block body%}
+
+<div class="container">
+  <div class="display-3 my-2 text-center">Breast Cancer Prediction</div>
+  <hr />
+  {% if context %}
+  <div class="display-4 my-2 text-center">
+    You have {{ context }}
+  </div>
+  {% endif %}
+
+  <div class="col-md-4">
+    <form class="" method="POST" action="{% url 'breast' %}">
+      {% csrf_token %}
+      <div class="">
+        <div class="form-group">
+          <label for="radius">Mean Radius <span><a href="#" title="Age"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="- represent the age of a person"><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
+          <input
+            type="number"
+            step=".00001"
+            class="form-control"
+            id="radius"
+            value="0"
+            name="radius"
+          />
+        </div>
+        <div class="form-group">
+          <label for="texture">Mean Texture <span><a href="#" title="Age"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="- represent the age of a person"><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
+          <input
+            type="number"
+            step=".00001"
+            class="form-control"
+            id="texture"
+            value="0"
+            name="texture"
+          />
+        </div>
+        <div class="form-group">
+          <label for="perimeter">Mean Perimeter <span><a href="#" title="Age"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="- represent the age of a person"><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
+          <input
+            type="number"
+            step=".00001"
+            class="form-control"
+            id="perimeter"
+            value="0"
+            name="perimeter"
+          />
+        </div>
+        <div class="form-group">
+          <label for="area">Mean Area <span><a href="#" title="Age"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="- represent the age of a person"><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
+          <input
+            type="number"
+            step=".00001"
+            class="form-control"
+            id="area"
+            value="0"
+            name="area"
+          />
+        </div>
+        <div class="form-group">
+          <label for="smoothness">Mean Smoothness <span><a href="#" title="Age"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="- represent the age of a person"><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
+          <input
+            type="number"
+            step=".00001"
+            class="form-control"
+            id="smoothness"
+            value="0"
+            name="smoothness"
+          />
+        </div>
+      </div>
+      <div class="mt-4">
+        <button type="submit" class="btn-lg btn-block btn btn-primary mb-5">
+          Predict
+        </button>
+        <a href="{% url 'consult_a_doctor' %}" class="btn-lg btn-block btn btn-primary mb-5">Consult a doctor</a>
+      </div>
+    </form>
+  </div>
+</div>
+{%endblock%}

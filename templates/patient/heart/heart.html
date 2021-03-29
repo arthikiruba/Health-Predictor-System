@@ -1,12 +1,12 @@
-{%extends 'basic.html'%}
-{%block content%}
+{% extends 'basic.html' %}
+{% block body %}
 
 <div class="container">
   <div class="display-3 my-2 text-center">Heart Disease Prediction</div>
   <hr />
   {% if context %}
   <div class="display-4 my-2 text-center">
-    You {{ context }} heart disease.
+    You {{ context }}
   </div>
   {% endif %}
 
@@ -15,7 +15,15 @@
       {% csrf_token %}
       <div class="col-md-4">
         <div class="form-group">
-          <label for="age">Age</label>
+          <label for="age">Age <span><a href="#" title="Age"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="- represent the age of a person"><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
           <input
             type="number"
             placeholder="age"
@@ -25,144 +33,259 @@
             />
         </div>
         <div class="form-group">
-          <label for="gender">Gender</label>
+          <label for="sex">Sex <span><a href="#" title="Sex"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="describe the gender of person (0-
+Feamle, 1-Male)"><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
           <input
-            type="text"
-            placeholder="(female or male)"
+            type="number"
+            placeholder="(female=0 or male=1)"
             class="form-control"
-            id="gender"
-            name="gender"
+            id="sex"
+            name="sex"
           />
         </div>
         <div class="form-group">
-          <label for="cp">Chest Pain Type</label>
+          <label for="cp">Chest Pain Type <span><a href="#" title="Chest Pain Type (CP)"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="represents the severity of chest
+pain patient is suffering. Range: 0-3"><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
           <input
             type="number"
             step="0.01"
             class="form-control"
             id="cp"
-            placeholder="(range: 0-3)"
+            placeholder="range: 0-3"
             name="cp"
           />
         </div>
         <div class="form-group">
-          <label for="trestbps">Blood Pressure</label>
+          <label for="trestbps">Blood Pressure <span><a href="#" title="Blood Pressure (BP)"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="-It represents the patient’s BP Range: 94-200"><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
           <input
             type="number"
             step="0.01"
             class="form-control"
             id="trestbps"
-            placeholder="(range: 94-200)"
+            placeholder="range: 94-200"
             name="trestbps"
           />
         </div>
         <div class="form-group">
-          <label for="chol">CHOLESTORAL</label>
+          <label for="chol">CHOLESTORAL <span><a href="#" title="CHOLESTORAL"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="-It shows the cholesterol level of
+the patient"><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
           <input
             type="number"
             step="0.01"
             class="form-control"
             id="chol"
-            placeholder="(range: 126-564)"
+            placeholder="range: 126-564"
             name="chol"
           />
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <label for="fbs">Blood Sugar</label>
+          <label for="fbs">Blood Sugar <span><a href="#" title="Blood Sugar"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="-It represent the fasting blood
+sugar in the patient."><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
           <input
             type="number"
             step="0.01"
             class="form-control"
             id="fbs"
-            placeholder="(range: (0-1))"
+            placeholder="range: 0-1"
             name="fbs"
           />
         </div>
         <div class="form-group">
-          <label for="restecg">Electrocardiographic</label>
+          <label for="restecg">Electrocardiographic <span><a href="#" title="Resting ECG"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="It shows the result of
+ECG
+"><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
           <input
             type="number"
             step="0.01"
             class="form-control"
             id="restecg"
-            placeholder="(range: values 0,1,2)"
+            placeholder="range: values 0,1,2"
             name="restecg"
           />
         </div>
         <div class="form-group">
-          <label for="thalach">Heart Rate</label>
+          <label for="thalach">Heart Rate <span><a href="#" title="Heartbeat"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="shows the max heart beat
+of patient"><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
           <input
             type="number"
             step="0.01"
             class="form-control"
             id="thalach"
-            placeholder="(range: 71-202)"
+            placeholder="range: 71-202"
             name="thalach"
           />
         </div>
         <div class="form-group">
-          <label for="exang">EXANG</label>
+          <label for="exang">EXANG <span><a href="#" title="Exang"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="used to identify if there is an
+exercise induced angina. If yes=1 or
+else no=0
+"><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
           <input
             type="number"
             step=".00001"
             class="form-control"
             id="exang"
-            value="0"
+            placeholder="yes=1 or no=0"
             name="exang"
           />
         </div>
         <div class="form-group">
-          <label for="oldpeak">OLDPEAK</label>
+          <label for="oldpeak">OLDPEAK <span><a href="#" title="OldPeak"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="describes patient’s
+depression level."><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
           <input
             type="number"
             step=".00001"
             class="form-control"
             id="oldpeak"
-            value="0"
+            placeholder="range: 0-6.2"
             name="oldpeak"
           />
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <label for="slope">SLOPE</label>
+          <label for="slope">SLOPE <span><a href="#" title="Slope"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="describes patient condition
+during peak exercise. It is divided into
+three segments(Unsloping, Flat, Down
+sloping)"><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
           <input
             type="number"
             step=".00001"
             class="form-control"
             id="slope"
-            value="0"
+            placeholder="range: values 0,1,2"
             name="slope"
           />
         </div>
         <div class="form-group">
-          <label for="ca">CA</label>
+          <label for="ca">CA <span><a href="#" title="CA"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="Result of fluoroscopy."><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
           <input
             type="number"
             step=".00001"
             class="form-control"
             id="ca"
-            value="0"
+            placeholder="range: values 0,1,2,3"
             name="ca"
           />
         </div>
         <div class="form-group mb-5">
-          <label for="thal">THAL</label>
+          <label for="thal">THAL <span><a href="#" title="Thal"
+             data-toggle="popover"
+             data-trigger="focus"
+             data-content="test required for patient
+suffering from pain in chest or
+difficulty in breathing. There are 4
+kinds of values which represent
+Thallium test."><span style='font-size:15px;'>&#8505;</span></a>
+          <script>
+          $(document).ready(function(){
+              $('[data-toggle="popover"]').popover();
+          });
+          </script></span></label>
           <input
             type="number"
             step=".00001"
             class="form-control"
             id="thal"
-            value="0"
+            placeholder="range: values 0,1,2,3"
             name="thal"
           />
         </div>
 
         <button type="submit" class="btn-lg btn-block btn btn-primary mb-5">
-          Submit
+          Predict
         </button>
+        <a href="{% url 'consult_a_doctor' %}" class="btn-lg btn-block btn btn-primary mb-5">Consult a doctor</a>
       </div>
     </form>
   </div>
